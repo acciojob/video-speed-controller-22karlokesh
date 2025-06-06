@@ -11,55 +11,54 @@
 
 
 // unknown 
-const video = document.querySelector('.viewer');
-const toggle = document.querySelector('.toggle');
-const skipButtons = document.querySelectorAll('[data-skip]');
-const volumeSlider = document.querySelector('.volume');
-const playbackSlider = document.querySelector('.playbackSpeed');
-const progress = document.querySelector('.progress');
-const progressFilled = document.querySelector('.progress__filled');
 
-// Toggle play/pause
-function togglePlay() {
-  const method = video.paused ? 'play' : 'pause';
-  video[method]();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // All your existing code goes here
 
-// Update button icon
-function updateButton() {
-  toggle.textContent = video.paused ? '►' : '❚ ❚';
-}
+  const video = document.querySelector('.player__video');
+  const toggle = document.querySelector('.toggle');
+  const skipButtons = document.querySelectorAll('[data-skip]');
+  const volumeSlider = document.querySelector('.volume');
+  const playbackSlider = document.querySelector('.playbackSpeed');
+  const progress = document.querySelector('.progress');
+  const progressFilled = document.querySelector('.progress__filled');
 
-// Skip forward/back
-function skip() {
-  video.currentTime += parseFloat(this.dataset.skip);
-}
+  function togglePlay() {
+    const method = video.paused ? 'play' : 'pause';
+    video[method]();
+  }
 
-// Handle volume and playback speed
-function handleRangeUpdate() {
-  video[this.name] = this.value;
-}
+  function updateButton() {
+    toggle.textContent = video.paused ? '►' : '❚ ❚';
+  }
 
-// Update progress bar
-function handleProgress() {
-  const percent = (video.currentTime / video.duration) * 100;
-  progressFilled.style.width = `${percent}%`;
-}
+  function skip() {
+    video.currentTime += parseFloat(this.dataset.skip);
+  }
 
-// Scrub video when clicking progress bar
-function scrub(e) {
-  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
-  video.currentTime = scrubTime;
-}
+  function handleRangeUpdate() {
+    video[this.name] = this.value;
+  }
 
-// Event listeners
-video.addEventListener('click', togglePlay);
-video.addEventListener('play', updateButton);
-video.addEventListener('pause', updateButton);
-video.addEventListener('timeupdate', handleProgress);
+  function handleProgress() {
+    const percent = (video.currentTime / video.duration) * 100;
+    progressFilled.style.width = `${percent}%`;
+  }
 
-toggle.addEventListener('click', togglePlay);
-skipButtons.forEach(button => button.addEventListener('click', skip));
-volumeSlider.addEventListener('input', handleRangeUpdate);
-playbackSlider.addEventListener('input', handleRangeUpdate);
-progress.addEventListener('click', scrub);
+  function scrub(e) {
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
+  }
+
+  video.addEventListener('click', togglePlay);
+  video.addEventListener('play', updateButton);
+  video.addEventListener('pause', updateButton);
+  video.addEventListener('timeupdate', handleProgress);
+
+  toggle.addEventListener('click', togglePlay);
+  skipButtons.forEach(button => button.addEventListener('click', skip));
+  volumeSlider.addEventListener('input', handleRangeUpdate);
+  playbackSlider.addEventListener('input', handleRangeUpdate);
+  progress.addEventListener('click', scrub);
+
+});
