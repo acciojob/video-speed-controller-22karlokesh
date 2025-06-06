@@ -1,7 +1,6 @@
-
-/* Your CSS Code here. */
-
 /* unknown*/
+
+/* Video Speed Controller Styles */
 
 .player {
   max-width: 750px;
@@ -11,16 +10,19 @@
   padding: 10px;
   border-radius: 8px;
 }
+
 .player__video {
   width: 100%;
   border-radius: 8px;
 }
+
 .controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .progress {
   flex: 1;
   background: #555;
@@ -30,12 +32,14 @@
   cursor: pointer;
   overflow: hidden;
 }
+
 .progress__filled {
   width: 0;
   background: #f90;
   height: 100%;
   transition: width 0.2s;
 }
+
 input[type="range"] {
   width: 100px;
 }

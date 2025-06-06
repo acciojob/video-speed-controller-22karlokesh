@@ -12,10 +12,9 @@
 
 // unknown 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.querySelector('.player__video');
-  if (!video) return; // Don't run if video not loaded
+  if (!video) return; // Don't run if video not loaded (prevents the error!)
 
   const toggle = document.querySelector('.toggle');
   const skipButtons = document.querySelectorAll('[data-skip]');
@@ -62,5 +61,3 @@ document.addEventListener('DOMContentLoaded', () => {
   playbackSlider.addEventListener('input', handleRangeUpdate);
   progress.addEventListener('click', scrub);
 });
-
-
