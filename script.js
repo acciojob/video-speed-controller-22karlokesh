@@ -13,9 +13,9 @@
 // unknown 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // All your existing code goes here
-
   const video = document.querySelector('.player__video');
+  if (!video) return; // Don't run if video not loaded (prevents the error!)
+
   const toggle = document.querySelector('.toggle');
   const skipButtons = document.querySelectorAll('[data-skip]');
   const volumeSlider = document.querySelector('.volume');
@@ -60,5 +60,5 @@ document.addEventListener('DOMContentLoaded', () => {
   volumeSlider.addEventListener('input', handleRangeUpdate);
   playbackSlider.addEventListener('input', handleRangeUpdate);
   progress.addEventListener('click', scrub);
-
 });
+
