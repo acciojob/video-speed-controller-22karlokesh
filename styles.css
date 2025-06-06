@@ -1,5 +1,8 @@
 
 /* Your CSS Code here. */
+
+/* unknown*/
+
 .player {
       max-width: 750px;
       margin: 20px auto;
@@ -8,7 +11,7 @@
       padding: 10px;
       border-radius: 8px;
     }
-    .viewer {
+    .player__video {
       width: 100%;
       border-radius: 8px;
     }
